@@ -20,29 +20,37 @@ const AuthProviders = () => {
   const [providers, setProviders] = useState<Providers | null>(null);
 
   useEffect(() => {
-      //once we load our AuthProviders fetchProviders
+    //once we load our AuthProviders fetchProviders
     const fetchProviders = async () => {
       const res = await getProviders;
 
-      console.log(res);
-    
+    //   console.log(res);
+
       setProviders(res);
     };
 
     fetchProviders();
   }, []);
 
-
+  console.log(`Providers: ${providers}`);
 
   if (providers) {
     return (
       <div>
         {Object.values(providers).map((provider: Provider, i) => (
-          <button key={i}>Google</button>
+          <button key={i} onClick={() => signIn(provider?.id)}>{provider.id}</button>
         ))}
       </div>
     );
+  } else {
+    return(
+          <div>
+              Customized Sign In
+          </div>
+      )
   }
+
+
 };
 
 export default AuthProviders;

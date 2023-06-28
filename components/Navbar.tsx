@@ -35,7 +35,6 @@ const Navbar = async () => {
                         </>
                     ) : (
                         <div>
-                            Sign In
                             <AuthProviders/>
                         </div>
                     )
