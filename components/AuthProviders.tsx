@@ -22,9 +22,9 @@ const AuthProviders = () => {
   useEffect(() => {
     //once we load our AuthProviders fetchProviders
     const fetchProviders = async () => {
-      const res = await getProviders;
+      const res = await getProviders();
 
-    //   console.log(res);
+      //   console.log(res);
 
       setProviders(res);
     };
@@ -32,25 +32,26 @@ const AuthProviders = () => {
     fetchProviders();
   }, []);
 
-  console.log(`Providers: ${providers}`);
+  console.log(providers);
 
   if (providers) {
     return (
-      <div>
+      <div className="flex justify-between gap-4">
         {Object.values(providers).map((provider: Provider, i) => (
-          <button key={i} onClick={() => signIn(provider?.id)}>{provider.id}</button>
+          <button key={i} onClick={() => signIn(provider?.id)}>
+            {provider.id}
+          </button>
         ))}
       </div>
     );
-  } else {
-    return(
-          <div>
-              Customized Sign In
-          </div>
-      )
   }
-
-
+  //   } else {
+  //     return(
+  //           <div>
+  //               Customized Sign In
+  //           </div>
+  //       );
+  //   }
 };
 
 export default AuthProviders;

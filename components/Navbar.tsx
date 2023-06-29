@@ -6,7 +6,7 @@ import AuthProviders from "./AuthProviders";
 
 const Navbar = async () => {
     const session = await getCurrentUser();//login session
-    console.log(session)
+    console.log(`session:${session}`)
     return (
         <nav className="flexBetween navbar">
             <div className="flex-1 flexStart gap-10">
@@ -35,7 +35,7 @@ const Navbar = async () => {
                         </>
                     ) : (
                         <div>
-                            <AuthProviders/>
+                            <AuthProviders />
                         </div>
                     )
                 }
